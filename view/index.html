@@ -136,7 +136,7 @@
     }
 
     function showPosition(position) {
-        var map = L.map('leafletmap').setView([-24.340808, 15.292754], 4); // LIGNE 14
+        var map = L.map('leafletmap').setView([-24.340808, 15.292754], 5); // LIGNE 14
         var osmLayer = L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', { // LIGNE 16
             attribution: '© OpenStreetMap contributors',
             maxZoom: 19
@@ -157,12 +157,10 @@
         wind = document.getElementById("wind");
         direction = document.getElementById("direction");
 
-        if(navigator.geolocation){
-            var showPosition = function(position){
-                updateByGeo(-24.340808, 15.292754);
-            }
-            navigator.geolocation.getCurrentPosition(showPosition);
+        var showPosition = function(){
+            updateByGeo(-24.340808, 15.292754);
         }
+        showPosition();
     }
 
     function updateByGeo(lat, lon){
