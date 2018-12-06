@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Hello Bulma!</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.min.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+    <style>
+        .GaugeMeter {
+            position: Relative;
+            text-align: Center;
+            overflow: Hidden;
+            cursor: Default;
+            display: inline-block;
+        }
+
+        .GaugeMeter SPAN, .GaugeMeter B {
+            width: 54%;
+            position: Absolute;
+            text-align: Center;
+            display: Inline-Block;
+            color: black;
+            font-weight: 100;
+            font-family: "Open Sans", Arial;
+            overflow: Hidden;
+            white-space: NoWrap;
+            text-overflow: Ellipsis;
+            margin: 0 23%;
+        }
+
+        .GaugeMeter[data-style="Semi"] B {
+            width: 80%;
+            margin: 0 10%;
+        }
+
+        .GaugeMeter S, .GaugeMeter U {
+            text-decoration: None;
+            font-size: .60em;
+            font-weight: 200;
+            opacity: .6;
+        }
+
+        .GaugeMeter B {
+            color: black;
+            font-weight: 200;
+            opacity: .8;
+        }
+
+
+    </style>
+</head>
+<body>
+<script
+        src="https://code.jquery.com/jquery-3.3.1.min.js"
+        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
+<section class="section">
+    <div class="container">
+        <div class="columns">
+            <div class="column is-4">
+                <figure class="image is-2by3">
+                    <img src="../images/human-skeleton.png">
+                </figure>
+            </div>
+            <div class="column is-2">
+                <aside class="menu">
+                    <ul class="menu-list" style="margin-top: 100px">
+                        <li style="margin-bottom: 70px"> <img src="../images/brain.png" alt="Placeholder image" height="50" width="50"></li>
+                        <li style="margin-bottom: 70px"> <img src="../images/like.png" alt="Placeholder image" height="50" width="50"></li>
+                        <li style="margin-bottom: 70px"> <img src="../images/stomach.png" alt="Placeholder image" height="50" width="50"></li>
+                        <li style="margin-bottom: 100px"> <img src="../images/dog-bone.png" alt="Placeholder image" height="50" width="50"></li>
+                    </ul>
+
+                </aside>
+
+            </div>
+            <div class="column">
+                <div class="columns">
+                    <div class="column">
+                        <div class="GaugeMeter" data-append="K" data-percent="10" data-size=250 data-theme="#2980B9" data-width=15 data-style="Arch" data-label="Step"></div>
+                    </div>
+                    <div class="column">
+                        <div class="GaugeMeter" data-append="Bpm" data-percent="60" data-size=200 data-theme="#2980B9" data-width=15 data-style="Arch" data-label="Bpm"></div>
+                    </div>
+                    <div class="column">
+                        <div class="GaugeMeter" data-append="Bpm" data-percent="60" data-size=200 data-theme="#2980B9" data-width=15 data-style="Arch" data-label="Bpm"></div>
+                    </div>
+                </div>
+                <div class="columns">
+                    <figure class="image is-1200x1200">
+                        <img src="../images/capture.png">
+                    </figure>
+                </div>
+            </div>
+
+        </div>
+        <div class="columns">
+            <div class="column is-4">
+                <div class="card">
+                    <header class="card-header">
+                        <p class="card-header-title">
+                            Last medical check-up
+                        </p>
+
+                    </header>
+                    <div class="card-content">
+                        <div class="content">
+                            <time datetime="2016-1-1">11:09 PM - 1 Jan 2016</time>
+                        </div>
+                    </div>
+
+            </div>
+        </div>
+
+    </div>
+</section>
+<script src="../Gauge-Meter-Plugin/GaugeMeter.js"></script>
+<script>
+
+    $(document).ready(function(){
+        // init
+        $(".GaugeMeter").gaugeMeter();
+
+
+    });
+</script>
+</body>
+</html>

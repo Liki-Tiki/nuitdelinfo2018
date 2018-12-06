@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>GaugeMeter.js - jQuery Plugin</title>
+        <meta name="description" content="Easy to use guage meter JavaScript plugin using jQuery">
+        <meta name="author" content="Mictronics">
+        <style>
+            .GaugeMeter {
+                position: Relative;
+                text-align: Center;
+                overflow: Hidden;
+                cursor: Default;
+                display: inline-block;
+            }
+
+            .GaugeMeter SPAN, .GaugeMeter B {
+                width: 54%;
+                position: Absolute;
+                text-align: Center;
+                display: Inline-Block;
+                color: black;
+                font-weight: 100;
+                font-family: "Open Sans", Arial;
+                overflow: Hidden;
+                white-space: NoWrap;
+                text-overflow: Ellipsis;
+                margin: 0 23%;
+            }
+
+            .GaugeMeter[data-style="Semi"] B {
+                width: 80%;
+                margin: 0 10%;
+            }
+
+            .GaugeMeter S, .GaugeMeter U {
+                text-decoration: None;
+                font-size: .60em;
+                font-weight: 200;
+                opacity: .6;
+            }
+
+            .GaugeMeter B {
+                color: black;
+                font-weight: 200;
+                opacity: .8;
+            }
+
+
+        </style>
+        <script type='text/javascript' src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
+        <script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.2/knockout-min.js'></script>
+        <script type='text/javascript' src="GaugeMeter.js"></script>
+    </head>
+    <body>
+        <header id="Header">
+            <h1>GaugeMeter.js jQuery Plugin</h1>
+            <p>An elegant and dynamic graphical gauge meter built with jQuery</p>
+            <p class="SubTitle">GaugeMeter in combination with <a href="http://knockoutjs.com" target="_blank">Knockout</a> using custom bindings and observables.</p>
+            <div class="Preview">
+                <div class="GaugeMeter" id="PreviewGaugeMeter" data-bind="gaugeValue: Percent" data-append="mph" data-size=200 data-theme="Black" data-width=15 data-style="Arch" data-label="Speed" data-animationstep="0"></div>
+            </div>
+        </header>
+
+        <script>
+            $(document).ready(function () {
+                // Initialize GaugeMeter plugin
+                $(".GaugeMeter").gaugeMeter();
+
+                // Bind new handler to init and update gauges.
+                ko.bindingHandlers.gaugeValue = {
+                    init: function(element, valueAccessor) {
+                        $(element).gaugeMeter({ percent: ko.unwrap(valueAccessor()) });
+                    },
+                    update: function(element, valueAccessor) {
+                        $(element).gaugeMeter({ percent: ko.unwrap(valueAccessor()) });
+                    }
+                };
+
+                // Create view model with inital gauge value 15mph
+                // Use observable for easy update.
+                var myViewModel = {
+                    Percent: ko.observable(15)
+                };
+                ko.applyBindings(myViewModel);
+            });
+        </script>
+    </body>
+</html>
