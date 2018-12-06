@@ -119,9 +119,7 @@
 
 </section>
 <script>
-    if (navigator.geolocation){
-        navigator.geolocation.getCurrentPosition(showPosition);
-    }
+
     var APPID = "af5227a19f6dada5636f6b5faf1a4274";
     var temp;
     var loc;
@@ -137,7 +135,21 @@
         temp.innerHTML = weather.temp;
     }
 
-    window.onload = function () {
+    function showPosition(position) {
+        var map = L.map('leafletmap').setView([-24.340808, 15.292754], 4); // LIGNE 14
+        var osmLayer = L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', { // LIGNE 16
+            attribution: '© OpenStreetMap contributors',
+            maxZoom: 19
+        });
+        map.addLayer(osmLayer);
+    }
+
+    $(document).ready ( function () {
+        showPosition();
+        meteo();
+    });
+
+    function meteo () {
         temp = document.getElementById("temperature");
         loc = document.getElementById("location");
         icon = document.getElementById("icon");
@@ -145,7 +157,12 @@
         wind = document.getElementById("wind");
         direction = document.getElementById("direction");
 
+        if(navigator.geolocation){
+            var showPosition = function(position){
                 updateByGeo(-24.340808, 15.292754);
+            }
+            navigator.geolocation.getCurrentPosition(showPosition);
+        }
     }
 
     function updateByGeo(lat, lon){
@@ -177,14 +194,6 @@
         return Math.round(k - 273.15);
     }
 
-    function showPosition(position) {
-        var map = L.map('leafletmap').setView([-24.340808, 15.292754], 4); // LIGNE 14
-        var osmLayer = L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', { // LIGNE 16
-            attribution: '© OpenStreetMap contributors',
-            maxZoom: 19
-        });
-        map.addLayer(osmLayer);
-    }
     $("#showHealthModal").click(function() {
         $(".modal").addClass("is-active");
     });
