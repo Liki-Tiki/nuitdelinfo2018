@@ -8,12 +8,13 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 app.set('views', path.join(__dirname, 'views'));
-app.use(express.static(path.join(__dirname + '/public')));
+app.use(express.static(path.join(__dirname + 'public')));
+app.set('view engine', 'html');
 
 app.get('/', function (req, res) {
-
+    res.sendFile(__dirname + '/index.html')
 });
 
-app.listen(5000, "51.75.91.104", function (req, res) {
-    console.log("Server launched on 51.75.91.104:5000");
+app.listen(5000, function (req, res) {
+    console.log("Server launched on port 5000");
 });
