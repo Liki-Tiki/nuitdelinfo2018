@@ -80,18 +80,49 @@
     </div>
 </section>
 
-<section class="section">
-    <div class="columns">
-        <div class="column" style="text-align: center">
-            First column
-        </div>
-        <div class="column" style="text-align: center">
-            Second column
-        </div>
-        <div class="column" style="text-align: center">
-            Third column
+<section class="" style="margin-top: 20px;">
+    <div class="container">
+        <div class="columns">
+            <div class="column is-4" style="margin-right: 20px; overflow-y: auto; border-style: groove;  height: 325px; width: 440px;">
+                <div class="card-body" style="width: 400px; height: 225px;">
+                    <aside class="menu">
+                        <p class="menu-label" style="text-align: center; color: red;">
+                              Mon Inventaire :
+                        </p>
+
+                        <p class="menu-label">
+                            Nourriture
+                        </p>
+                        <ul class="menu-list">
+                            <li><a>Plat froid</a></li>
+                            <li>
+                                <a class="is-active">Plats chauds</a>
+                                <ul>
+                                    <li><a>Members</a></li>
+                                    <li><a>Plugins</a></li>
+                                    <li><a>Add a member</a></li>
+                                </ul>
+                            </li>
+                            <li><a>Invitations</a></li>
+                            <li><a>Cloud Storage Environment Settings</a></li>
+                            <li><a>Authentication</a></li>
+                        </ul>
+                        <p class="menu-label">
+                            Transactions
+                        </p>
+                        <ul class="menu-list">
+                            <li><a>Payments</a></li>
+                            <li><a>Transfers</a></li>
+                            <li><a>Balance</a></li>
+                        </ul>
+                    </aside>
+                </div>
+            </div>
         </div>
     </div>
+
+
+
 </section>
 <script>
     if (navigator.geolocation){
@@ -122,7 +153,7 @@
 
         if(navigator.geolocation){
             var showPosition = function(position){
-                updateByGeo(position.coords.latitude, position.coords.longitude);
+                updateByGeo(-24.340808, 15.292754);
             }
             navigator.geolocation.getCurrentPosition(showPosition);
         }
@@ -143,9 +174,9 @@
                 var data = JSON.parse(xmlhttp.responseText);
                 var weather = {};
                 weather.code = data.weather[0].id;
-                weather.humidity = data.main.humidity;
-                weather.location = data.name;
-                weather.temp = K2C(data.main.temp);
+                weather.humidity = "9";
+                weather.location = "Désert du Namib";
+                weather.temp = "30";
                 update(weather);
             }
         };
@@ -156,8 +187,9 @@
     function K2C(k){
         return Math.round(k - 273.15);
     }
+
     function showPosition(position) {
-        var map = L.map('leafletmap').setView([position.coords.latitude, position.coords.longitude], 18); // LIGNE 14
+        var map = L.map('leafletmap').setView([-24.340808, 15.292754], 4); // LIGNE 14
         var osmLayer = L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', { // LIGNE 16
             attribution: '© OpenStreetMap contributors',
             maxZoom: 19
