@@ -12,7 +12,7 @@ app.use(express.static(path.join(__dirname + 'public')));
 app.set('view engine', 'html');
 
 app.get('/', function (req, res) {
-    res.sendFile(__dirname + '/index.html')
+    res.sendFile(__dirname + '/view/index.html')
 });
 
 app.listen(5000, function (req, res) {
