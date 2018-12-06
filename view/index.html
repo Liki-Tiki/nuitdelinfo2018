@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Hello Bulma!</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.min.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+</head>
+<body>
+<body>
+<script
+        src="https://code.jquery.com/jquery-3.3.1.min.js"
+        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
+<section class="section">
+    <div class="container">
+        <div class="columns">
+            <div class="column is-4">
+                First column
+            </div>
+            <div class="column is-4">
+                <div class="card">
+                <div class="card-image">
+                    <figure class="image is-2by2">
+                        <img src="https://media.thetab.com/blogs.dir/48/files/2014/02/fb-profile.gif" alt="Placeholder image">
+                    </figure>
+                </div>
+                <div class="card-content">
+                    <div class="media">
+                        <div class="media-content">
+                            <p class="title is-4">John Smith</p>
+                            <p class="subtitle is-6">56 years old</p>
+                        </div>
+                    </div>
+
+                    <div class="content">
+                        <p>
+                            <button class="button is-primary modal-button" id="showHealthModal" data-target="modal" aria-haspopup="true">Health</button>
+
+                        </p>
+                        <div class="modal">
+                            <div class="modal-background"></div>
+                            <div class="modal-card">
+                                <header class="modal-card-head">
+                                    <p class="modal-card-title">Modal title</p>
+                                    <button class="delete closeModal" aria-label="close"></button>
+                                </header>
+                                <section class="modal-card-body">
+                                    <!-- Content ... -->
+                                </section>
+                                <footer class="modal-card-foot">
+                                    <button class="button closeModal">Cancel</button>
+                                </footer>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+            <div class="column is-4">
+                Third column
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+        <h1 class="title">Section</h1>
+        <h2 class="subtitle">
+            A simple container to divide your page into <strong>sections</strong>, like the one you're currently reading
+        </h2>
+    </div>
+</section>
+<script>
+    $("#showHealthModal").click(function() {
+        $(".modal").addClass("is-active");
+    });
+
+    $(".closeModal").click(function() {
+        $(".modal").removeClass("is-active");
+    });
+
+</script>
+</body>
+</html>
