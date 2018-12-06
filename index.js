@@ -6,13 +6,14 @@ var app = express();
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+app.use('/assets', express.static('assets'));
 
 app.set('views', path.join(__dirname, 'views'));
 app.use(express.static(path.join(__dirname + 'public')));
 app.set('view engine', 'html');
 
 app.get('/', function (req, res) {
-    res.sendFile(__dirname + '/index.html')
+    res.sendFile(__dirname + '/view/index.html')
 });
 
 app.listen(5000, function (req, res) {
